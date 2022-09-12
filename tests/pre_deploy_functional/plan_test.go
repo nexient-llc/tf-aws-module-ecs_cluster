@@ -15,6 +15,7 @@
 package test
 
 import (
+	"os"
 	"path"
 	"testing"
 
@@ -25,15 +26,17 @@ import (
 )
 
 var ApprovedProviders = []string{
-	"registry.terraform.io/hashicorp/random",
+	"registry.terraform.io/hashicorp/aws",
 }
 
-func TestRandomDefaultExample(t *testing.T) {
+func TestPlan(t *testing.T) {
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, path.Join("..", ".."), ".")
 	_ = files.CopyFile(path.Join("..", "..", ".tool-versions"), path.Join(tempTestFolder, ".tool-versions"))
+	pwd, _ := os.Getwd()
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: tempTestFolder,
 		PlanFilePath: "terraform.tfplan",
+		VarFiles:     [](string){path.Join(pwd, "..", "test.tfvars")},
 	})
 
 	tfplan := terraform.InitAndPlanAndShowWithStruct(t, terraformOptions)
