@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "string" {
-  value = random_string.string.result
+output "name" {
+  value = var.name
+}
+
+output "id" {
+  value = aws_ecs_cluster.main.id
+}
+
+output "arn" {
+  value = aws_ecs_cluster.main.arn
 }
