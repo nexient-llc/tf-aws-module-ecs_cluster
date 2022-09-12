@@ -13,13 +13,16 @@
 // limitations under the License.
 
 output "name" {
-  value = var.name
+  value       = var.name
+  description = "The name of the repository."
 }
 
 output "id" {
-  value = aws_ecs_cluster.main.id
+  value       = aws_ecs_cluster.main.id
+  description = "The unique identifier for the attachment."
 }
 
 output "arn" {
-  value = aws_ecs_cluster.main.arn
+  value       = aws_ecs_cluster.main.arn
+  description = "The Amazon resource name (ARN) that identifies the repo."
 }
