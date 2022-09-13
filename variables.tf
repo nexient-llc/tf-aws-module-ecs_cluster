@@ -12,17 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-variable "length" {
-  type    = number
-  default = 24
+variable "name" {
+  description = "Application Name."
+  type        = string
 }
 
-variable "number" {
-  type    = bool
-  default = true
-}
-
-variable "special" {
-  type    = bool
-  default = false
+variable "tags" {
+  description = "Tags to be applied to all resources created."
+  type        = map(string)
+  default     = {}
 }

@@ -12,8 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-resource "random_string" "string" {
-  length  = var.length
-  number  = var.number
-  special = var.special
+resource "aws_ecs_cluster" "main" {
+  name = var.name
+  tags = var.tags
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

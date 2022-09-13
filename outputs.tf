@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "string" {
-  value = random_string.string.result
+output "name" {
+  value       = var.name
+  description = "The name of the repository."
+}
+
+output "id" {
+  value       = aws_ecs_cluster.main.id
+  description = "The unique identifier for the attachment."
+}
+
+output "arn" {
+  value       = aws_ecs_cluster.main.arn
+  description = "The Amazon resource name (ARN) that identifies the repo."
 }
