@@ -16,8 +16,10 @@ package test
 
 // Basic imports
 import (
+
 	"os"
 	"path"
+
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/files"
@@ -38,6 +40,7 @@ type TerraTestSuite struct {
 func (suite *TerraTestSuite) SetupSuite() {
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(suite.T(), "../..", ".")
 	_ = files.CopyFile(path.Join("..", "..", ".tool-versions"), path.Join(tempTestFolder, ".tool-versions"))
+
 	pwd, _ := os.Getwd()
 	suite.TerraformOptions = terraform.WithDefaultRetryableErrors(suite.T(), &terraform.Options{
 		TerraformDir: tempTestFolder,
